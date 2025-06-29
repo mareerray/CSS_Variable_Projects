@@ -1,0 +1,70 @@
+/* Variable declations */
+:root {
+    --red: #ff6f69;  /*global scope */
+    --beige: #ffeead;
+    --yellow: #ffcc5c;
+}
+/* root = all element inside html */
+
+.grid {
+    --columns: 200px 200px;
+}
+/* --------------------------------------------------- */
+/* Styles */
+html, body {
+    background: var(--beige);
+    color: var(--red);
+}
+
+h1, p {
+    color: var(--red);
+}
+
+#navbar {
+    /* example to create local variables */
+    --nav-red: #d05e5a; /* local scope */
+}
+
+#navbar a {
+    color: var(--nav-red);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: var(--columns);
+    grid-auto-rows: 140px;
+    grid-gap: 20px;
+    justify-content: center;
+}
+
+/* .item { you can also separate var declaration from usage 
+        --item-pink-bg: rgb(240, 120, 140);
+} */
+
+.item {
+    /* example to override variables */
+    /* --red: #d05e5a; */
+    background: var(--yellow);
+    --item-pink-bg: rgb(240, 120, 140);
+}
+
+button {
+    background: var(--item-pink-bg);
+    color: var(--yellow);
+}
+
+/* example of how to set theming by overriding some variables */
+.featured {
+    --yellow: #ffe55b;
+    --red: #ff5564;   
+}
+
+/* Responsiveness and variables */
+@media all and (max-width: 450px) {
+    .grid {
+        --columns: 200px;   
+    }
+    :root{
+        --beige: #f3c4bf; /* example of changing root variable */
+    }
+}
